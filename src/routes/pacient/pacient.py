@@ -9,7 +9,7 @@ from src.schemas.message_schema import Message as Messages
 routes = APIRouter()
 
 
-@routes.post("/add_message_pacient/{key}")
+@routes.post("/add_message_pacient/{key}", response_model=Messages)
 async def add_message_pacient(key: int, msg: SchemaMessage):
     if key == 12:
         message = Message.Message(person_id=msg.person_id, message=msg.message)

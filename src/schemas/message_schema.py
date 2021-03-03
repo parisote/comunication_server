@@ -1,4 +1,10 @@
 from pydantic import BaseModel
+from enum import Enum
+
+
+class sendEnum(str, Enum):
+    SENT = 'SENT'
+    NOT_SENT = 'NOT_SENT'
 
 
 class MessageBase(BaseModel):

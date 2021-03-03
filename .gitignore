@@ -8,4 +8,3 @@ alembic.ini
 /src/schemas/__pycache__/*
 /src/routes/auth/__pycache__/*
 /src/routes/pacient/__pycache__/*
-/src/task/__pycache__/*

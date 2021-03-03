@@ -1,7 +1,13 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+import enum
+from sqlalchemy import Column, Integer, String, Enum
 
 Base = declarative_base()
+
+
+class sendEnum(enum.Enum):
+    SENT = 'SENT'
+    NOT_SENT = 'NOT_SENT'
 
 
 class Message(Base):
@@ -9,3 +15,4 @@ class Message(Base):
     id = Column(Integer, primary_key=True, index=True)
     person_id = Column(Integer)
     message = Column(String(255))
+    send = Column(Enum(sendEnum))

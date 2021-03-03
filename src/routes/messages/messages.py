@@ -22,6 +22,7 @@ USER = os.getenv('MYSQL_USER')
 PASSWORD = os.getenv('MYSQL_PASSWORD')
 BASE = os.getenv('MYSQL_BASE')
 KEY = os.getenv('KEY')
+PHONE_SMS = os.getenv('PHONE_SMS')
 
 mydb = mysql.connector.connect(
   host=HOST,
@@ -52,8 +53,7 @@ async def searchMessage():
     myresult = mycursor.fetchall()
     for x in myresult:
         phone = '+54'+str(x[4])
-        print(phone)
-        client.api.account.messages.create(to=phone, from_='+17149420776', body=x[2])
+        client.api.account.messages.create(to=phone, from_=PHONE_SMS, body=x[2])
         sql = "UPDATE message SET send = 'SENT' WHERE id = " + str(x[0])
         mycursor.execute(sql)
 

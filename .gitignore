@@ -7,4 +7,4 @@ alembic.ini
 /src/__pycache__/*
 /src/schemas/__pycache__/*
 /src/routes/auth/__pycache__/*
-/src/routes/pacient/__pycache__/*
+/src/routes/messages/__pycache__/*

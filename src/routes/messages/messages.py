@@ -36,7 +36,7 @@ mycursor = mydb.cursor()
 @routes.post("/add_message_pacient/{key}", response_model=Messages)
 async def add_message_pacient(key: str, msg: SchemaMessage):
     if key == KEY:
-        message = Message.Message(person_id=msg.person_id, message=msg.message, send=Message.sendEnum.NOT_SENT)
+        message = Message.Message(person_id=msg.person_id, phone_number=msg.phone_number, message=msg.message, send=Message.sendEnum.NOT_SENT)
         db.session.add(message)
         db.session.commit()
         db.session.refresh(message)
@@ -50,11 +50,11 @@ async def searchMessage():
     client = Client(account_sid, auth_token)
     mycursor.execute("SELECT * FROM message WHERE send = 'NOT_SENT'")
     myresult = mycursor.fetchall()
-    print(myresult)
     for x in myresult:
-        client.api.account.messages.create(to='+541130295440', from_='+17149420776', body=x[2])
+        phone = '+54'+str(x[4])
+        print(phone)
+        client.api.account.messages.create(to=phone, from_='+17149420776', body=x[2])
         sql = "UPDATE message SET send = 'SENT' WHERE id = " + str(x[0])
-        print(sql)
         mycursor.execute(sql)
 
     mydb.commit()

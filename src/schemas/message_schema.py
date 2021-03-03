@@ -14,11 +14,13 @@ class MessageBase(BaseModel):
 class MessageCreate(MessageBase):
     person_id: int
     message: str
+    phone_number: int
 
 
 class Message(MessageBase):
     person_id: int
     message: str
+    phone_number: int
 
     class Config:
         orm_mode = True

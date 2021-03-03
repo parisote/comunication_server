@@ -25,8 +25,8 @@ fileConfig(config.config_file_name)
 # add your model's MetaData object here
 # for 'autogenerate' support
 from models import message
-from models import pacient
-target_metadata = [message.Base.metadata, pacient.Base.metadata]
+from models import patient
+target_metadata = [message.Base.metadata, patient.Base.metadata]
 # target_metadata = None
 
 # other values from the config, defined by the needs of env.py,
